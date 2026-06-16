@@ -1,0 +1,5 @@
+const API_URL='REPLACE_WITH_APPS_SCRIPT_WEBAPP_URL';
+async function api(action,data={}){
+ const r=await fetch(API_URL,{method:'POST',body:JSON.stringify({action,data})});
+ return await r.json();
+}
