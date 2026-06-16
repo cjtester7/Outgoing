@@ -1,0 +1,22 @@
+
+document.addEventListener('DOMContentLoaded',()=>{
+ loadCars();
+ document.getElementById('saveBtn').addEventListener('click',saveCar);
+});
+async function loadCars(){
+ try{
+  const cars=await api('getCars');
+  document.getElementById('cars').innerHTML=cars.map(c=>
+   `<div class="card mb-2"><div class="card-body"><b>${c.Stock||''}</b> - ${c.Driver||''}<br>${c.Company||''}</div></div>`
+  ).join('');
+ }catch(e){console.error(e);}
+}
+async function saveCar(){
+ const data={
+  Driver:Driver.value,PhoneNumber:PhoneNumber.value,Company:Company.value,
+  Make:Make.value,Model:Model.value,VIN:VIN.value,Stock:Stock.value,
+  Comments:Comments.value,Destination:Destination.value,Keys:Keys.value
+ };
+ await api('saveCar',data);
+ location.reload();
+}

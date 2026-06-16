@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Drive Outs v1</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/styles-v1.css" rel="stylesheet">
-</head>
-<body>
-<div class="container mt-3">
-<h2>Drive Outs</h2>
-<input id="searchInput" class="form-control mb-3" placeholder="Search">
-<button class="btn btn-primary mb-3" onclick="showForm()">+ New Drive Out</button>
-<div id="carsContainer"></div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/api-v1.js"></script>
-<script src="js/app-v1.js"></script>
-</body>
-</html>
+
+const API_URL='REPLACE_WITH_APPS_SCRIPT_WEBAPP_URL';
+async function api(action,data={}){
+ const r=await fetch(API_URL,{method:'POST',body:JSON.stringify({action,data})});
+ return r.json();
+}
